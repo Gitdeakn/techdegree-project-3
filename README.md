@@ -27,3 +27,5 @@ Card Number - must be between 13 - 16 numbers
 Zip Code – must be 5 numbers long
 
 CVV – must be 3 numbers long
+
+When the user submits the form it will give the user feedback if any inputs are no valid.
