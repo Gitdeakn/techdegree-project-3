@@ -30,18 +30,18 @@ jobRollInput.addEventListener('change', () => {
 designInput.addEventListener ('change', (e) => {
   colorInput.disabled = false; //Enables color selection input
   const colorSelectionList = colorInput.children; //Gets HTML collection of color options
-  for (let i = 1; i < colorSelectionList.length; i++){
+  for (let i = 0; i < colorSelectionList.length; i++){
     const designValue = e.target.value; //Gets the value of the design input selected
     const attribute = colorSelectionList[i].getAttribute('data-theme'); // Gets attribute value of each color
     //This loop tests if the design value picked matchs the attribute 'data-theme' 
     if (designValue == attribute) {
+      colorSelectionList[0].selected = true;
       colorSelectionList[i].hidden = false; 
-      colorSelectionList[i].removeAttribute('selected');
-      colorSelectionList[4].setAttribute('selected',  true);
+      colorSelectionList[i].removeAttribute('selected'); 
     } else {
+      colorSelectionList[0].selected = true;
       colorSelectionList[i].hidden = true;
-      colorSelectionList[i].removeAttribute('selected');
-      colorSelectionList[1].setAttribute('selected', true); 
+      colorSelectionList[i].removeAttribute('selected');   
     } 
   }
 });
@@ -170,19 +170,20 @@ function isExpirationYear (){
   return false;
 }
 
-
 // Form submit event
 // Will submit the form it all the input values are true
 // If any input values are false it will add color/error messages to the user
 form.addEventListener('submit', (e) => {
+  
   if (isNameValid(userNameInput)) {
     userNameInput.parentElement.classList.remove('not-valid');
     userNameInput.parentElement.className = 'valid';
-    userNameInput.parentElement.lastElementChild.style.display = 'none';
+    userNameInput.parentElement.lastElementChild.style.display = 'none';  
   } else {
     userNameInput.parentElement.className = 'not-valid';
     userNameInput.parentElement.classList.remove('valid');
     userNameInput.parentElement.lastElementChild.style.display = 'block';
+    e.preventDefault();
   }
   if (isEmailValid(userEmailInput)) {
     userEmailInput.parentElement.classList.remove('not-valid');
@@ -192,6 +193,7 @@ form.addEventListener('submit', (e) => {
     userEmailInput.parentElement.classList.remove('valid');
     userEmailInput.parentElement.className = 'not-valid';
     userEmailInput.parentElement.lastElementChild.style.display = 'block';
+    e.preventDefault();
   } 
   if (isActivitiesValid()) {
     activitiesField.classList.remove('not-valid');
@@ -199,6 +201,7 @@ form.addEventListener('submit', (e) => {
   } else {
     activitiesField.classList.remove('valid');
     activitiesField.classList.add('not-valid');
+    e.preventDefault();
   }
   if (paymentOptionsList[1].selected == true) {
     if (isCreditCardNumberValid(creditCardNumberInput)
@@ -211,9 +214,9 @@ form.addEventListener('submit', (e) => {
       } else {
       paymentInfoDiv.classList.remove('valid');
       paymentInfoDiv.classList.add('not-valid');
+      e.preventDefault();
     }
   }
-  e.preventDefault();
 });
 
 // When a checkbox element is focused it gives it the class focus to help the user understand what is selected
