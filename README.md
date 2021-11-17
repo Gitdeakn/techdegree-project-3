@@ -11,11 +11,19 @@ The webpage will also update a total price for activities selected.
 
 When the payment method is changed to bitcoin or PayPal the page will display the appropriate payment information.
 
+
 Before the form can submit:
+
 Name - must not be empty
+
 Email - must be in format email@google.com
+
 Activities - at least 1 activity must be selected
+
 Payment – Default selected Credit Card, if user wants to use credit card to pay:
+
 Card Number - must be between 13 - 16 numbers
+
 Zip Code – must be 5 numbers long
+
 CVV – must be 3 numbers long
