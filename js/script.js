@@ -35,11 +35,11 @@ designInput.addEventListener ('change', (e) => {
     const attribute = colorSelectionList[i].getAttribute('data-theme'); // Gets attribute value of each color
     //This loop tests if the design value picked matchs the attribute 'data-theme' 
     if (designValue == attribute) {
-      colorSelectionList[0].selected = true;
+      colorSelectionList[4].selected = true;
       colorSelectionList[i].hidden = false; 
       colorSelectionList[i].removeAttribute('selected'); 
     } else {
-      colorSelectionList[0].selected = true;
+      colorSelectionList[1].selected = true;
       colorSelectionList[i].hidden = true;
       colorSelectionList[i].removeAttribute('selected');   
     } 
